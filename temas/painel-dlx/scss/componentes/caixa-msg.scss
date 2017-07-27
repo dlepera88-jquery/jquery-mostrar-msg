@@ -1,0 +1,147 @@
+// Configurações ------------------------------------------------------------ //
+$seletor: '.caixa-msg';
+$cx-msg-pd: 10px;
+$icone-fonte-tm: 3em;
+
+
+// Animação ----------------------------------------------------------------- //
+@keyframes entrada-msg {
+    0% {
+        // Posicionamento
+        left: -100%;
+    }
+
+    80% {
+        // Posicionamento
+        left: 60%;
+    }
+}
+
+
+// Estilo ------------------------------------------------------------------- //
+#{$seletor} {
+    // Posicionamento
+    position: absolute;
+    top: 45%;
+    left: 50%;
+
+    // Transformar
+    transform: translate(-50%, -50%);
+
+    // Visual
+    background: #FFF;
+
+    // Margens
+    padding: $cx-msg-pd $cx-msg-pd * 2;
+
+    // Tamanho
+    width: 100%;
+
+    // Texto
+    text-align: center;
+    font-size: 1.4em;
+
+    // Animação
+    animation: entrada-msg .6s linear;
+
+    > .mensagem {
+        // Posicionamento
+        position: relative;
+
+        // Visual
+        display: inline-block;
+
+        &::before {
+            // Texto
+            font: 3em icomoon;
+
+            // Posicionamento
+            position: absolute;
+            top: 45%;
+            left: $cx-msg-pd * -1;
+
+            // Transformar
+            transform: translate(-100%, -50%);
+
+            // Visual
+            opacity: .5;
+            display: inline-block;
+
+            // Alinhamento
+            vertical-align: middle;
+        }
+    }
+
+    > .botoes {
+        // Margens
+        margin-top: 15px;
+
+        > .botao {
+            // Visual
+            border-radius: 4px;
+            border: none;
+
+            // Margens
+            padding: 7px 25px;
+
+            &:not(:last-child) {
+                // Margens
+                margin-right: 15px;
+            }
+
+            &.-sim {
+                // Visual
+                background: green;
+
+                // Texto
+                color: #FFF;
+            }
+
+            &.-nao {
+                // Visual
+                background: red;
+
+                // Texto
+                color: #FFF;
+            }
+        }
+    }
+}
+
+@each $tipo, $cor, $icone in $tipos-msg {
+    &.-#{$tipo} {
+        #{$seletor} {
+            // Texto
+            color: $cor;
+
+            @if ($icone) {
+                // Margens
+                // O paddding lateral só será necessário caso o ícone seja exibido
+                padding-left: $icone-fonte-tm * 1.5;
+
+                > .mensagem {
+                    // Tamanho
+                    // Definir uma altura mínima para a mensagem, para que o ícone
+                    // não 'estoure' os limites. Deixo um pouco menor que o tamanho
+                    // da fonte para dar o efeito de centralizado verticalmente
+                    min-height: $icone-fonte-tm - 1;
+
+                    &::before {
+                        // Conteúdo
+                        content: $icone;
+                    }
+                }
+            } // Fim if
+
+            > .botoes {
+                .botao.-destaque {
+                    // Visual
+                    background: $cor;
+
+                    // Texto
+                    color: #FFF;
+                }
+            }
+        }
+    }
+}

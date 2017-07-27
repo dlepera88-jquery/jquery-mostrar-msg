@@ -1,0 +1,30 @@
+// Configurações ------------------------------------------------------------ //
+$seletor: '.tecla-esc';
+
+
+// Animações ---------------------------------------------------------------- //
+@keyframes entrada-esc {
+    0% {
+        // Posicionamento
+        bottom: -100%;
+    }
+}
+
+
+// Estilo ------------------------------------------------------------------- //
+#{$seletor} {
+    // Posicionamento
+    position: absolute;
+    bottom: 40px;
+
+    // Texto
+    color: #FFF;
+    text-align: center;
+    font-size: 1.25em;
+
+    // Tamanho
+    width: 100%;
+
+    // Animações
+    animation: entrada-esc .8s linear;
+}

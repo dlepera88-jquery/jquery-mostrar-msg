@@ -1,0 +1,50 @@
+// Configurações ------------------------------------------------------------ //
+$plugin: '__jQuery-mostrarMsg';
+$tema: 'padrao';
+$seletor_tema: '.#{$plugin}.#{$tema}';
+$tipos-msg: 'sucesso' green '\ea10',
+    'info' #069 '\ea0c',
+    'aviso' orangered '\ea07',
+    'erro' red '\ea0f';
+
+
+// Animação ----------------------------------------------------------------- //
+@keyframes fade-in {
+    0% {
+        // Visual
+        opacity: 0;
+    }
+}
+
+
+// Fontes personalizadas ---------------------------------------------------- //
+@font-face {
+    $src_fonte: 'fontes/icomoon/';
+    font-family: icomoon;
+    src: url('#{$src_fonte}icomoon.eot');
+    src: url('#{$src_fonte}icomoon?#iefix') format('embedded-opentype'),
+        url('#{$src_fonte}icomoon.svg') format('svg'),
+        url('#{$src_fonte}icomoon.ttf') format('truetype');
+}
+
+
+// Estilo ------------------------------------------------------------------- //
+#{$seletor_tema} {
+    // Posicionamento
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+
+    // Tamanho
+    width: 100%;
+    height: 100%;
+
+    // Visual
+    background: rgba(black, .75);
+
+    // Animações
+    animation: fade-in .4s linear;
+
+    @import 'componentes/*';
+}
