@@ -1,4 +1,4 @@
-/** @preserve
+/**
  * jquery.mostrarmsg.funcao.js
  * @version: v1.17.07
  * @author: Diego Lepera
@@ -6,7 +6,7 @@
  * Created by Diego Lepera on 2017-07-24. Please report any bug at
  * https://github.com/dlepera88-jquery/jquery-mostrar-msg/issues
  *
- * The MIT License (MIT)
+ * The MIT License (MIT) https://github.com/dlepera88-jquery/jquery-mostrar-msg/blob/master/LICENSE
  * Copyright (c) 2017 Diego Lepera http://diegolepera.xyz/
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -28,7 +28,10 @@
  * SOFTWARE.
  */
 
-/* jshint unused:false */
+/** @preserve
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Diego Lepera http://diegolepera.xyz/
+ */
 
  // Verificar se o jQuery foi inicializado
  if (typeof jQuery === 'undefined') {
@@ -108,7 +111,7 @@
             var $cx_msg = $(document.createElement('div')).addClass('caixa-msg').appendTo($div);
 
             // Criar o parágrafo que vai receber a mensagem
-            var $paragr = $(document.createElement('p')).addClass('mensagem').html(opcoes.mensagem).appendTo($cx_msg);
+            /*var $paragr = */$(document.createElement('p')).addClass('mensagem').html(opcoes.mensagem).appendTo($cx_msg);
 
             // Criar os botões
             var qtde_botoes = opcoes.botoes.length || 0;
