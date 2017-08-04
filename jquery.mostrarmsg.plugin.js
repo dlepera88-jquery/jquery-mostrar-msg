@@ -94,7 +94,7 @@
 
             // Carregar o arquivo CSS com o tema solicitado
             var css_tema = fArquivos.__DIR__() + '/jquery-mostrar-msg/temas/' + opcoes.tema + '/css/mostrarmsg.tema.css';
-            $.get(css_tema).success(function () {
+            $.get(css_tema, function () {
                 $(document.createElement('link')).attr({
                     rel:    'stylesheet',
                     media:  'all',
