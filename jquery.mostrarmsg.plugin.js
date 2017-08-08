@@ -1,6 +1,6 @@
 /**
- * jquery.mostrarmsg.funcao.js
- * @version: v1.17.07
+ * jquery.mostrarmsg.plugin.js
+ * @version: v1.17.08
  * @author: Diego Lepera
  *
  * Created by Diego Lepera on 2017-07-24. Please report any bug at
@@ -47,7 +47,32 @@
             // Dessa forma, retorna o src relativo
             var script_src = $('script[src]').attr('src');
             return script_src.substring(0, script_src.lastIndexOf('/')) || '.';
-        }
+        },
+
+        /**
+         * Carregar o tema solicitado pelo desenvolvedor
+         * @param  {String} tema Nome do tema
+         * @return {Void}
+         */
+        carregarTema: function (tema) {
+            // Carregar o arquivo CSS com o tema solicitado
+            var css_tema = fArquivos.__DIR__() + '/jquery-mostrar-msg/temas/' + tema + '/css/mostrarmsg.tema.css';
+            $.get(css_tema, function () {
+                var $link = $(document.createElement('link')).attr({
+                    rel:    'stylesheet',
+                    media:  'all',
+                    href:   css_tema
+                });
+
+                if ($('link[rel="stylesheet"]').length > 0) {
+                    $link.insertAfter($('link[rel="stylesheet"]').last());
+                } else {
+                    $link.appendTo($('head'));
+                } // Fim if
+            }).fail(function () {
+                console.warn('Não foi possível carregar o arquivo %s.', css_tema);
+            });
+        } // Fim function carregarTema
     };
 
 
@@ -93,16 +118,7 @@
             }, opcoes);
 
             // Carregar o arquivo CSS com o tema solicitado
-            var css_tema = fArquivos.__DIR__() + '/jquery-mostrar-msg/temas/' + opcoes.tema + '/css/mostrarmsg.tema.css';
-            $.get(css_tema, function () {
-                $(document.createElement('link')).attr({
-                    rel:    'stylesheet',
-                    media:  'all',
-                    href:   css_tema
-                }).insertAfter($('link[rel="stylesheet"]').last());
-            }).fail(function () {
-                console.warn('Não foi possível carregar o arquivo %s.', css_tema);
-            });
+            fArquivos.carregarTema(opcoes.tema);
 
             // Criar a div que receberá a mensagem como um todo
             var $div = $(document.createElement('div')).addClass('__jQuery-mostrarMsg ' + opcoes.tema + ' ' + opcoes.tipo);
