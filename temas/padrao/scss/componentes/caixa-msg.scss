@@ -32,6 +32,8 @@ $icone-fonte-tm: 3em;
     background: #FFF;
     border-radius: 4px;
     box-shadow: 0 0 10px rgba(black, .95);
+    box-sizing: border-box;
+    // display: inline-block;
 
     // Margens
     padding: $cx-msg-pd;
@@ -39,6 +41,11 @@ $icone-fonte-tm: 3em;
     // Tamanho
     min-width: 25%;
     max-width: 92%;
+
+    /* width: auto ainda não funciona bem no chrome, pois seria necessário
+    definir display: inline-block e isso faz com que o posicionamento da caixa-msg
+    não funcione corretamente */
+    width: 400px;
 
     // Texto
     text-align: center;
