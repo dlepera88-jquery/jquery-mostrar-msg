@@ -45,7 +45,7 @@
             // var script_src = $('script[src]').get(0).src;
 
             // Dessa forma, retorna o src relativo
-            var script_src = $('script[src]').attr('src');
+            var script_src = $('script[src*="jquery-mostrar-msg"]').attr('src');
             return script_src.substring(0, script_src.lastIndexOf('/')) || '.';
         },
 
@@ -56,7 +56,7 @@
          */
         carregarTema: function (tema) {
             // Carregar o arquivo CSS com o tema solicitado
-            var css_tema = fArquivos.__DIR__() + '/jquery-mostrar-msg/temas/' + tema + '/css/mostrarmsg.tema.css';
+            var css_tema = fArquivos.__DIR__() + '/temas/' + tema + '/css/mostrarmsg.tema.css';
             $.get(css_tema, function () {
                 var $link = $(document.createElement('link')).attr({
                     rel:    'stylesheet',
