@@ -169,7 +169,7 @@
 
                 for (var i = 0; i < qtde_botoes; i++) {
                     btn_atual = opcoes.botoes[i];
-                    $(document.createElement('button')).text(btn_atual.texto).attr(btn_atual.params)
+                    $(document.createElement('button')).text(btn_atual.texto).attr(btn_atual.params || { class: 'botao' })
                         .on('click.' + $.mostrarMsg.evt_ns, {btn_atual: btn_atual}, func_click).appendTo($botoes);
                 } // Fim for
             } // Fim if ... else
